@@ -26,7 +26,7 @@
   Also the JS function displays the Upload submit button that calls UploadAsync that uploads the files to Azure Blob Storage.*@
 @using (Html.BeginForm("Upload", "Gallery", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    <div class="fileUpload btn btn-default">
+    <div class="fileUpload btn btn-primary">
         <span>Select Files</span><input type="file" id="file" name="selectFiles" class="upload" onchange="DisplayFilesToUpload()" multiple />
     </div>
     @* This gets populated from the DisplayFilesToUpload() JS function*@
@@ -49,7 +49,7 @@
 
     using (Html.BeginForm("DeleteAll", "Gallery", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
-        <div class="fileUpload btn btn-default"><span>Delete All Files</span><input type="submit" name="deleteAll" class="upload" /></div>
+        <div class="fileUpload btn btn-danger"><span>Delete All Files</span><input type="submit" name="deleteAll" class="upload" /></div>
     }
 }
 <script>
@@ -74,7 +74,7 @@
             if ('size' in file) {html += "size: " + file.size + " bytes)<br>";}
         }
 
-        html += "<div class='fileUpload btn btn-default'><span>Upload</span><input type='submit' class='upload' value='Upload'/></div>"
+        html += "<div class='fileUpload btn btn-primary'><span>Upload</span><input type='submit' class='upload' value='Upload'/></div>"
         document.getElementById("FilesToUpload").innerHTML = html;
     }
 
