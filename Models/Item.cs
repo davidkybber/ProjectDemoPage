@@ -1,6 +1,7 @@
+using Newtonsoft.Json;
+
 namespace ProjectDemoPage.Models
 {
-    using Newtonsoft.Json;
 
     public class Item
     {

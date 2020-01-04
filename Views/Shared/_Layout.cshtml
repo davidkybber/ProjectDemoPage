@@ -18,12 +18,12 @@
                 </button>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                @*<li>@Html.ActionLink("Index", "Index", "Home")</li>*@
                         <li class="dropdown">
-                            <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Projects<span class="caret"></span></a>
+                            <span class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Projects<span class="caret"></span></span>
                             <ul class="dropdown-menu" role="menu">
                                 <li>@Html.ActionLink("To Do List", "Index", "ToDo")</li>
                                 <li>@Html.ActionLink("Currency Converter", "Converter", "Currency")</li>
+                                <li>@Html.ActionLink("Photo Gallery", "Index", "Gallery")</li>
                             </ul>
                         </li>
                     </ul>
@@ -39,7 +39,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2019 - ProjectDemoPage - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2020 - ProjectDemoPage - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
