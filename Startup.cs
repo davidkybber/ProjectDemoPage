@@ -27,7 +27,7 @@ namespace ProjectDemoPage
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<ICosmosDbService>(
-                InitializeCosmosClientInstanceAsync(Configuration.GetSection("CosmosDb"))
+                InitializeCosmosClientInstanceAsync(Configuration.GetSection("CosmosDb"), Configuration)
                 .GetAwaiter().GetResult());
             services.AddSingleton<IAzureBlobConnectionFactory, AzureBlobConnectionFactory>();
             services.AddSingleton<IAzureBlobService, AzureBlobService>();
@@ -36,12 +36,12 @@ namespace ProjectDemoPage
         }
 
         private static async Task<CosmosDbService> InitializeCosmosClientInstanceAsync(
-            IConfigurationSection configurationSection)
+            IConfigurationSection configurationSection, IConfiguration configuration)
         {
             string databaseName = configurationSection.GetSection("DatabaseName").Value;
             string containerName = configurationSection.GetSection("ContainerName").Value;
             string account = configurationSection.GetSection("Account").Value;
-            string key = configurationSection.GetSection("Key").Value;
+            string key = configuration["CosmosDbKey"];
             CosmosClientBuilder clientBuilder = new CosmosClientBuilder(account, key);
             CosmosClient client = clientBuilder
                                 .WithConnectionModeDirect()
