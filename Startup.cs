@@ -24,7 +24,7 @@ namespace ProjectDemoPage
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public object ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<ICosmosDbService>(
                 InitializeCosmosClientInstanceAsync(Configuration.GetSection("CosmosDb"))
@@ -33,7 +33,6 @@ namespace ProjectDemoPage
             services.AddSingleton<IAzureBlobService, AzureBlobService>();
             services.AddControllersWithViews();
             services.AddHttpClient();
-            return services;
         }
 
         private static async Task<CosmosDbService> InitializeCosmosClientInstanceAsync(
