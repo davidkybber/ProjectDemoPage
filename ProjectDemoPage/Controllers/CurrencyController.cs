@@ -34,11 +34,15 @@ namespace ProjectDemoPage.Controllers
                 ModelState.AddModelError(string.Empty, "Cannot convert currency to itself");
             }
 
+            if (string.IsNullOrEmpty(model.CurrencyFrom) || string.IsNullOrEmpty(model.CurrencyTo))
+            {
+                ModelState.AddModelError(string.Empty, "Cannot convert empty currencies");
+            }
+
             if (!ModelState.IsValid)
             {
                 return View(model);
-            }
-
+            }           
 
             var response = Get(model.CurrencyFrom);
 
